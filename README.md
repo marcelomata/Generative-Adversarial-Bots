@@ -33,9 +33,7 @@ To accelerate the process, and ensure that it is done quickly but smoothly, we u
 ## Next Steps
 Before all, our project is a rough prototype of what we have in mind. In term of chatbots, we are planning to add Amazon Lexa and Google Assistant, as well as use the platforms by Nuance MIX, API.ai and Microsoft Cognitive Toolkit. To train those chatbots, we are planning to find more dialogue corpus to create exotic chatbots. 
 
-Ultimately, we wish to reduce the human-factor as much as possible by implementing Turing Test-inspired 
+Ultimately, we wish to reduce the human-factor as much as possible by implementing Turing Test-inspired computing methods, as described in [this paper](https://arxiv.org/pdf/1701.06547.pdf). Other than this test, we are interested in exploring different types of metrics, which are describe in [this systematic review](https://arxiv.org/ftp/arxiv/papers/1704/1704.04579.pdf). If done well, our prototype has a lot of potential to save a lot of time and energy in term of generating samples for chatbots, as well as providing an alternative method to create a strong chatbot from scratch.
 
+## Links
 Here's our Google Slides: [link](https://docs.google.com/presentation/d/1MjSdeB57STukNT04J7WG1fOLMiktLi9YsH4rbOxnznI/edit?usp=sharing)
-
-
-
