@@ -64,7 +64,7 @@ conversation_record.append((1,'cleverbot',cleverbot_response))
 recha_response = recha.get_response(cleverbot_response).text
 
                                  
-for interaction in range(2,6):
+for interaction in range(2,101):
     recha_response = recha.get_response(cleverbot_response).text
     cleverbot_response, _, _ = interact_cleverbot(recha_response, cleverbot_state)
     

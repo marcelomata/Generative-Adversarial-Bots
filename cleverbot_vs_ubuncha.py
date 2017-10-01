@@ -6,7 +6,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import UbuntuCorpusTrainer
 
 
-training_ubuncha = False
+training_ubuncha = True
 
 
 def interact_cleverbot(text_input, cleverbot_state=""):
