@@ -28,7 +28,7 @@ Although the Cleverbot API did not require any training, we had to train our Cha
 To accelerate the process, and ensure that it is done quickly but smoothly, we used the **Microsoft Azure** Virtual Machines to train our models simultaneously. Although it's our first use of the VMs, we are excited to see what Azure can do when we will scale up the model trainings.
 
 ## The Interactions Illustrated
-(To be added)
+[[https://github.com/xhlulu/Generative-Adversarial-Bots/blob/master/interactions_illustrated.jpg]]
 
 ## Next Steps
 Before all, our project is a rough prototype of what we have in mind. In term of chatbots, we are planning to add Amazon Lexa and Google Assistant, as well as use the platforms by Nuance MIX, API.ai and Microsoft Cognitive Toolkit. To train those chatbots, we are planning to find more dialogue corpus to create exotic chatbots. 
