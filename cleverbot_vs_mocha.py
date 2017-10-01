@@ -2,6 +2,7 @@ import csv
 import requests
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+import pickle
 
 training_mocha = True
 
@@ -19,60 +20,27 @@ def interact_cleverbot(text_input, cleverbot_state=""):
     return output, new_cs, res_json
 
 
-with open('movie_lines.txt','r') as file:
-    raw_movie_data = file.readlines()
-
-print("Original length of movie data:",len(raw_movie_data))
-
-
-
-movie_data = []
-
-for line_raw in raw_movie_data:
-    line_list = line_raw.split("\n")[0].split("+++$+++")
-    movie_data.append(line_list[3:])
-
-
-# Here we are removing the repetitions
-
-previous_name = None
-line_number = 0
-
-while line_number < len(movie_data):
-    current_name, dialogue = movie_data[line_number]
-    
-    if current_name == previous_name:
-        movie_data[line_number-1][1] += "\n" + movie_data.pop(line_number)[1]
-        line_number -= 1
-                
-    previous_name = current_name
-    line_number += 1
-
-print("New length of data:",len(movie_data))
-
-dialogue_list = [line[1] for line in movie_data]
-
-
-
 # Initialize a movie chatterbot
 movie_chatterbot = ChatBot(
     "Movie",
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
-    logic_adapters=[
-        "chatterbot.logic.MathematicalEvaluation",
-        "chatterbot.logic.TimeLogicAdapter",
-        "chatterbot.logic.BestMatch"
-    ],
     database='./movie_database.sqlite3'    
 )
 
 mocha = movie_chatterbot  # Giving a friendly-sounding alias
 
+dialogue_list = pickle.load(open('dialogue_lines.p','rb'))
 
+
+        
 
 if training_mocha:
     mocha.set_trainer(ListTrainer)
-    mocha.train(dialogue_list[:10000])
+    mocha.train(dialogue_list[:250])
+    mocha.train(dialogue_list[5000:5250])
+    mocha.train(dialogue_list[100000:100250])
+    mocha.train(dialogue_list[50000:50250])
+    mocha.train(dialogue_list[200000:200250])
 
 
 
@@ -80,18 +48,22 @@ mocha.read_only = True
 print(mocha.read_only)
 
 
-
 # List to store the conversation
 conversation_record = []
 
 # Initialize the conversation with cleverbot
-mocha_response = ""
-cleverbot_state = ""
+cleverbot_response, cleverbot_state,_ = interact_cleverbot("")
+
+print("Cleverbot:", cleverbot_response)
+print()
+
+conversation_record.append((1,'cleverbot',cleverbot_response))
 
 
-for interaction in range(1,101):
-    cleverbot_response, cleverbot_state, res_json = interact_cleverbot(mocha_response, cleverbot_state)
+for interaction in range(2,101):
+    
     mocha_response = mocha.get_response(cleverbot_response).text
+    cleverbot_response, _, _ = interact_cleverbot(mocha_response, cleverbot_state)
     
     print("Cleverbot: ", cleverbot_response)
     print("Mocha: ", mocha_response)    
