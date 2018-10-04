@@ -1,5 +1,9 @@
 # Generative-Adversarial-Bots
 
+## Looking for contributors
+
+This project is looking for contributors. If you are interested, please start an issue and tag me (@xhlulu) in.
+
 ## What are Generative Adversarial Bots?
 Briefly, Generative Adversarial Bots (GABs) are bots that are pitched up against each other, and generate a conversation that is used to train a third bot.
 
